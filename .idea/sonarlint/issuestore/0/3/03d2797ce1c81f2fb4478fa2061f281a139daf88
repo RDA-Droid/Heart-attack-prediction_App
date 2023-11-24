@@ -1,0 +1,28 @@
+
+E
+java:S1604a"(Make this anonymous inner class a lambda(ĞàÕ8¹„¯ù¿1
+E
+java:S1604k"(Make this anonymous inner class a lambda(ĞàÕ8¹„¯ù¿1
+p
+java:S1104"SMake context a static final constant or non-public and provide accessors if needed.(Òò®­8¹„¯ù¿1
+J
+java:S1444"-Make this "public static context" field final(Òò®­8¹„¯ù¿1
+{	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(èÆ¥¶üÿÿÿÿ8º„¯ù¿1
+s	java:S116"WRename this field "btn_finalize" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ÚŞ8Ğ„¯ù¿1
+¤
+java:S1186…"€Add a nested comment explaining why this method is empty, throw an UnsupportedOperationException or complete the implementation.(ÑØâŸûÿÿÿÿ8Ò„¯ù¿1
+Ÿ
+java:S1186Š"€Add a nested comment explaining why this method is empty, throw an UnsupportedOperationException or complete the implementation.(¨âÿä8Ò„¯ù¿1
+¤
+java:S1186"€Add a nested comment explaining why this method is empty, throw an UnsupportedOperationException or complete the implementation.(ÃØº¼úÿÿÿÿ8Ò„¯ù¿1
+¤
+java:S1186”"€Add a nested comment explaining why this method is empty, throw an UnsupportedOperationException or complete the implementation.(ÂÈ½Óıÿÿÿÿ8Ò„¯ù¿1
+¤
+java:S1186™"€Add a nested comment explaining why this method is empty, throw an UnsupportedOperationException or complete the implementation.(‚ø¾ ıÿÿÿÿ8Ò„¯ù¿1
+V	java:S899H";Do something with the "boolean" value returned by "delete".(Œ‹°8à„¯ù¿1
+j
+java:S4042H"NUse "java.nio.file.Files#delete" here for better messages on error conditions.(Œ‹°8à„¯ù¿1
+V
+java:S1874L"9Remove this use of "PreferenceManager"; it is deprecated.(ä—´Ô8à„¯ù¿1
+`
+java:S1874L"CRemove this use of "getDefaultSharedPreferences"; it is deprecated.(ä—´Ô8á„¯ù¿1

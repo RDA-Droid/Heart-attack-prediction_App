@@ -1,0 +1,329 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fillViewport="true">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="16dp">
+    <!-- Age -->
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Edad:" />
+    <EditText
+        android:id="@+id/editTextAge"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:inputType="number"
+        android:text="30" />
+
+    <!-- Sex Male -->
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Sexo (Masculino=1, Femenino=0):" />
+    <EditText
+        android:id="@+id/editTextSexMale"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:inputType="number"
+        android:text="1" />
+
+    <!-- Cholesterol -->
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Colesterol:" />
+    <EditText
+        android:id="@+id/editTextCholesterol"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:inputType="number"
+        android:text="170" />
+
+    <!-- Systolic Pressure -->
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Presión Sistólica:" />
+    <EditText
+        android:id="@+id/editTextSystolicPressure"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:inputType="number"
+        android:text="120" />
+
+    <!-- Diastolic Pressure -->
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Presión Diastólica:" />
+    <EditText
+        android:id="@+id/editTextDiastolicPressure"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:inputType="number"
+        android:text="80" />
+
+    <!-- Heart Rate -->
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Frecuencia Cardíaca:" />
+    <EditText
+        android:id="@+id/editTextHeartRate"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:inputType="number"
+        android:text="120" />
+
+    <!-- Diabetes -->
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Diabetes (Sí=1, No=0):" />
+    <EditText
+        android:id="@+id/editTextDiabetes"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:inputType="number"
+        android:text="0" />
+
+    <!-- Smoking -->
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Fumar (Sí=1, No=0):" />
+    <EditText
+        android:id="@+id/editTextSmoking"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:inputType="number"
+        android:text="1" />
+
+    <!-- Obesity -->
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Obesidad (Sí=1, No=0):" />
+    <EditText
+        android:id="@+id/editTextObesity"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:inputType="number"
+        android:text="0" />
+
+    <!-- Alcohol Consumption -->
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Consumo de Alcohol (Moderado=1, No=0):" />
+    <EditText
+        android:id="@+id/editTextAlcoholConsumption"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:inputType="number"
+        android:text="1" />
+
+    <!-- Exercise Hours Per Week -->
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Horas de Ejercicio por Semana:" />
+    <EditText
+        android:id="@+id/editTextExerciseHours"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:inputType="number"
+        android:text="3" />
+
+    <!-- Diet Balanced -->
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Dieta Equilibrada (Sí=1, No=0):" />
+    <EditText
+        android:id="@+id/editTextDietBalanced"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:inputType="number"
+        android:text="1" />
+
+    <!-- Previous Heart Problems -->
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Problemas Cardíacos Previos (Sí=1, No=0):" />
+    <EditText
+        android:id="@+id/editTextPreviousHeartProblems"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:inputType="number"
+        android:text="0" />
+
+    <!-- Medication Use -->
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Uso de Medicamentos (No=1, Sí=0):" />
+    <EditText
+        android:id="@+id/editTextMedicationUse"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:inputType="number"
+        android:text="1" />
+
+    <!-- Stress Level -->
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Nivel de Estrés (Bajo=1, Alto=0):" />
+    <EditText
+        android:id="@+id/editTextStressLevel"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:inputType="number"
+        android:text="1" />
+
+    <!-- Sedentary Hours Per Day -->
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Horas Sedentarias por Día:" />
+    <EditText
+        android:id="@+id/editTextSedentaryHours"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:inputType="number"
+        android:text="8" />
+
+    <!-- Income -->
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Ingreso:" />
+    <EditText
+        android:id="@+id/editTextIncome"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:inputType="number"
+        android:text="50000" />
+
+    <!-- BMI -->
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Índice de Masa Corporal (BMI):" />
+    <EditText
+        android:id="@+id/editTextBMI"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:inputType="number"
+        android:text="10" />
+
+    <!-- Triglycerides -->
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Triglicéridos:" />
+    <EditText
+        android:id="@+id/editTextTriglycerides"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:inputType="number"
+        android:text="150" />
+
+    <!-- Physical Activity Days Per Week -->
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Días de Actividad Física por Semana:" />
+    <EditText
+        android:id="@+id/editTextPhysicalActivityDays"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:inputType="number"
+        android:text="4" />
+
+    <!-- Sleep Hours Per Day -->
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Horas de Sueño por Día:" />
+    <EditText
+        android:id="@+id/editTextSleepHours"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:inputType="number"
+        android:text="7" />
+
+    <!-- Country -->
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="País:" />
+    <EditText
+        android:id="@+id/editTextCountry"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:inputType="number"
+        android:text="1" />
+
+    <!-- Continent -->
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Continente:" />
+    <EditText
+        android:id="@+id/editTextContinent"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:inputType="number"
+        android:text="1" />
+
+    <!-- Hemisphere -->
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Hemisferio (Norte=1, Sur=0):" />
+    <EditText
+        android:id="@+id/editTextHemisphere"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:inputType="number"
+        android:text="1" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Ataques Cardiacos Familiares(Si=1, No=0):" />
+        <EditText
+            android:id="@+id/editTextFamilyHistory"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="number"
+            android:text="1" />
+
+
+        <pl.droidsonroids.gif.GifImageView
+            android:id="@+id/loaderGif"
+            android:layout_width="101dp"
+            android:layout_height="88dp"
+            android:src="@drawable/loadin"
+            />
+
+
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/confirmadr"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:text="Confirmar" />
+
+</ScrollView >

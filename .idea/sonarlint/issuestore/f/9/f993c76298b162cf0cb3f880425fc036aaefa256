@@ -1,0 +1,19 @@
+
+p
+java:S1192¡"RDefine a constant instead of duplicating this literal "shared_login_data" 4 times.(³õå¡8¦ÿ¾ö¿1
+n	java:S117É"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(µ·Êä8Šûîö¿1
+n	java:S117É"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(µ·Êä8Šûîö¿1
+n	java:S117É"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(µ·Êä8Šûîö¿1
+Q
+java:S1172]"/Remove this unused method parameter "mContext".(çêĞüÿÿÿÿ8ãÿ¾ö¿1
+Y
+java:S1874_"<Remove this use of "getActiveNetworkInfo"; it is deprecated.(€áÔ‚8äÿ¾ö¿1
+^
+java:S1874`"<Remove this use of "getActiveNetworkInfo"; it is deprecated.(íÇ£Èÿÿÿÿÿ8äÿ¾ö¿1
+U
+java:S1874`"3Remove this use of "isConnected"; it is deprecated.(íÇ£Èÿÿÿÿÿ8äÿ¾ö¿1
+j	java:S100"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Ä”Ûn8íÿ¾ö¿1
+p	java:S100­"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(”ÅŞÃıÿÿÿÿ8îÿ¾ö¿1
+k	java:S100»"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Ğøç8ïÿ¾ö¿1
+I
+java:S1068""'Remove this unused "TAG" private field.(Ğ¤‚¨ùÿÿÿÿ8ğÿ¾ö¿1
