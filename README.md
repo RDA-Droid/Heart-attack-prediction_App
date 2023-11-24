@@ -6,7 +6,7 @@ MinSDk 21 MaxSdk 33
 
 ### Ejemplo
 
-Ejemplo de campors para el apuntamiento de la App a App
+Ejemplo de campors para el apuntamiento de la APP
     
            new Handler().postDelayed(new Runnable() {
             @Override
@@ -15,7 +15,7 @@ Ejemplo de campors para el apuntamiento de la App a App
                         SplashScreen.this,
                         "demo",                    "ProyecName"
                         "db92efc69991",              "Apikery"
-                        "http://127.0.0.1:5000",       "UrlBase"
+                        "http://127.0.0.1:5000",       "UrlBase Remplezar por el Local"
                         new AppHandler() {
                             @Override
                             public void onSuccess(CloseResponse response, int code, String uuidDevice) {
@@ -34,6 +34,7 @@ Ejemplo de campors para el apuntamiento de la App a App
 
     }
 
+Tener En cuenta que para la ejecucion debe correr el servicio de Prediccion https://github.com/RDA-Droid/Servicio_Heart-attack-prediction
 
 ### Generar un APK para la Aplicación "App":
 
