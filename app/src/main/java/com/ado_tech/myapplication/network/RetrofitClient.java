@@ -4,6 +4,8 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
+import android.util.Log;
 
 import androidx.annotation.NonNull;
 
@@ -16,12 +18,12 @@ import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
 import java.io.IOException;
-import java.util.Objects;
 import java.util.concurrent.TimeUnit;
 
 import okhttp3.Interceptor;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
+import okhttp3.logging.HttpLoggingInterceptor;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -31,26 +33,37 @@ import retrofit2.converter.gson.GsonConverterFactory;
 public class RetrofitClient implements ApiHelper {
 
     static Context context;
-    private static final String TAG = "okhttp";
+    private static final String TAG = "RetrofitClient";
+
+    private static OkHttpClient.Builder getBaseHttpClient() {
+        OkHttpClient.Builder httpClient = new OkHttpClient.Builder();
+
+        // Add logging interceptor
+        HttpLoggingInterceptor loggingInterceptor = new HttpLoggingInterceptor(message -> Log.d(TAG, message));
+        loggingInterceptor.setLevel(HttpLoggingInterceptor.Level.BODY);
+        httpClient.addInterceptor(loggingInterceptor);
+
+        return httpClient;
+    }
 
     private static RetrofitApi getprediction() {
+        OkHttpClient.Builder httpClient = getBaseHttpClient();
 
-        OkHttpClient.Builder httpClient = new OkHttpClient.Builder();
         httpClient.addInterceptor(new Interceptor() {
             @Override
             public okhttp3.Response intercept(Chain chain) throws IOException {
                 Request request = chain
                         .request()
                         .newBuilder()
-                        .addHeader("APIKEY", RetrofitClient.getApiKey_Server())
-                        .addHeader("PROYECTNAME", RetrofitClient.getNameProject_Server())
-                         .build();
+                        .addHeader("APIKEY", "db92efc69991")
+                        .addHeader("PROYECTNAME", "demo")
+                        .build();
                 return chain.proceed(request);
             }
         });
 
         return new Retrofit.Builder()
-                .baseUrl(RetrofitClient.getUrlSite_Server()+"/predict")
+                .baseUrl("https://3eba-2800-484-6975-5f40-c0f1-c5b8-e874-23fc.ngrok.io/")
                 .addConverterFactory(GsonConverterFactory.create())
                 .client(httpClient
                         .connectTimeout(90, TimeUnit.SECONDS)
@@ -61,41 +74,48 @@ public class RetrofitClient implements ApiHelper {
                 .create(RetrofitApi.class);
     }
 
-            private static RetrofitApi getClientValidationTransaction() {
+    private static RetrofitApi getClientValidationTransaction() {
+        OkHttpClient.Builder httpClient = getBaseHttpClient();
 
-                OkHttpClient.Builder httpClient = new OkHttpClient.Builder();
-                httpClient.addInterceptor(new Interceptor() {
-                    @Override
-                    public okhttp3.Response intercept(Chain chain) throws IOException {
-                        Request request = chain
-                                .request()
-                                .newBuilder()
-                                .addHeader("APIKEY", RetrofitClient.getApiKey_Server())
-                                .addHeader("PROYECTNAME", RetrofitClient.getNameProject_Server())
-                                .build();
-                        return chain.proceed(request);
-                    }
-                });
-
-                return new Retrofit.Builder()
-                        .baseUrl(RetrofitClient.getUrlSite_Server()+"obtener_prediccion"+"/")
-                        .addConverterFactory(GsonConverterFactory.create())
-                        .client(httpClient
-                                .connectTimeout(90, TimeUnit.SECONDS)
-                                .readTimeout(90, TimeUnit.SECONDS)
-                                .writeTimeout(90, TimeUnit.SECONDS)
-                                .build())
-                        .build()
-                        .create(RetrofitApi.class);
+        httpClient.addInterceptor(new Interceptor() {
+            @Override
+            public okhttp3.Response intercept(Chain chain) throws IOException {
+                Request request = chain
+                        .request()
+                        .newBuilder()
+                        .addHeader("APIKEY", "db92efc69991")
+                        .addHeader("PROYECTNAME", "demo")
+                        .build();
+                return chain.proceed(request);
             }
+        });
 
+        return new Retrofit.Builder()
+                .baseUrl("https://3eba-2800-484-6975-5f40-c0f1-c5b8-e874-23fc.ngrok.io/")
+                .addConverterFactory(GsonConverterFactory.create())
+                .client(httpClient
+                        .connectTimeout(90, TimeUnit.SECONDS)
+                        .readTimeout(90, TimeUnit.SECONDS)
+                        .writeTimeout(90, TimeUnit.SECONDS)
+                        .build())
+                .build()
+                .create(RetrofitApi.class);
+    }
 
-            private boolean checkConnection(Context mContext) {
-                final ConnectivityManager connectivityManager = ((ConnectivityManager) app.getAppContext().getSystemService(Context.CONNECTIVITY_SERVICE));
-                return Objects.requireNonNull(connectivityManager).getActiveNetworkInfo() != null
-                        && connectivityManager.getActiveNetworkInfo().isConnected();
-            }
+    private boolean checkConnection(Context mContext) {
+        if (mContext == null) {
+            return false;
+        }
 
+        ConnectivityManager connectivityManager = (ConnectivityManager) mContext.getSystemService(Context.CONNECTIVITY_SERVICE);
+
+        if (connectivityManager == null) {
+            return false;
+        }
+
+        NetworkInfo activeNetworkInfo = connectivityManager.getActiveNetworkInfo();
+        return activeNetworkInfo != null && activeNetworkInfo.isConnected();
+    }
 
     public void validateTransaction(final String txId, ValidateTransactionHandler handler, Context mContext) {
         if (!checkConnection(mContext)) {
@@ -121,7 +141,6 @@ public class RetrofitClient implements ApiHelper {
 
     @Override
     public void Newtransaccion(Newtransaccion request, final NewtransaccionHandler handler, Context mContext) {
-
         if (!checkConnection(mContext)) {
             handler.onConnectionFailed();
             return;
@@ -142,7 +161,6 @@ public class RetrofitClient implements ApiHelper {
                     } catch (IOException e) {
                         handler.onFailure(response.code(), app.getAppContext().getResources().getString(R.string.unknown_error));
                     }
-
                 }
             }
 
@@ -151,52 +169,19 @@ public class RetrofitClient implements ApiHelper {
                 handler.onFailure(-1, t.toString());
             }
         });
-
     }
 
-
     public static String getUrlSite_Server() {
-                String value = "";
-                if(context != null ){
-                    SharedPreferences data = context.getSharedPreferences("shared_login_data",Context.MODE_PRIVATE);
-                    if (data != null) {
-                        value = data.getString("urlSite_Server", "");
-                    }
-                    assert value != null;
-                    if (value.isEmpty()) {
-                        value = "";
-                    }
-                }
-                return value;
-            }
+        return "https://3eba-2800-484-6975-5f40-c0f1-c5b8-e874-23fc.ngrok.io";
+    }
 
-            public static String getNameProject_Server() {
-                String value = "";
-                SharedPreferences data = context.getSharedPreferences("shared_login_data",Context.MODE_PRIVATE);
-                if (data != null) {
-                    value = data.getString("nameProject_Server", "");
-                }
-                assert value != null;
-                if (value.isEmpty()) {
-                    value = "";
-                }
+    public static String getNameProject_Server() {
+        return "demo";
+    }
 
-                return value;
-            }
-
-            public static String getApiKey_Server() {
-                String value = "";
-                SharedPreferences data = context.getSharedPreferences("shared_login_data",Context.MODE_PRIVATE);
-                if (data != null) {
-                    value = data.getString("apiKey_Server", "");
-                }
-                assert value != null;
-                if (value.isEmpty()) {
-                    value = "";
-                }
-
-                return value;
-            }
+    public static String getApiKey_Server() {
+        return "db92efc69991";
+    }
 
     public static void storeConfigSdk(Activity activity, String UrlSite_Sdk, String nameProject_Sdk, String apiKey_Sdk) {
         SharedPreferences prefs = activity.getSharedPreferences("shared_login_data", Context.MODE_PRIVATE);
@@ -204,12 +189,10 @@ public class RetrofitClient implements ApiHelper {
         editor.putString("urlSite_Sdk", UrlSite_Sdk);
         editor.putString("nameProject_Sdk", nameProject_Sdk);
         editor.putString("apiKey_Sdk", apiKey_Sdk);
-        editor.commit();
+        editor.apply();
     }
 
     public static void setContext(Context context) {
         RetrofitClient.context = context;
     }
-
-
 }

@@ -17,7 +17,6 @@ public class ResultPresent implements ResultContract.Presenter {
         this.context = context;
     }
 
-
     @Override
     public void evaluateTransaction(String transactionId) {
         view.onWebServiceStart();
@@ -25,15 +24,17 @@ public class ResultPresent implements ResultContract.Presenter {
                 new ApiHelper.ValidateTransactionHandler() {
                     @Override
                     public void onSuccess(int statusCode, CloseResponse response) {
-                        if (response.getother_info().equals("RESULTADO")) {
+                        if (statusCode == 200) {
+                            view.finishFlow(true,response,statusCode);
+                        } else {
+                            // Low probability, show another message
                             ResultPresent.delay(10, new DelayCallback() {
                                 @Override
                                 public void afterDelay() {
                                     evaluateTransaction(transactionId);
                                 }
                             });
-                        } else
-                            view.continueFlow(true, statusCode, response);
+                        }
                     }
 
                     @Override
@@ -62,5 +63,4 @@ public class ResultPresent implements ResultContract.Presenter {
             }
         }, secs * 1000); // afterDelay will be executed after (secs*1000) milliseconds.
     }
-
 }

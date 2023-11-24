@@ -14,10 +14,13 @@ public class sdkopen {
                              String apiKey_Sdk,
                              String Url_Sdk,
                              AppHandler handler) {
+        Intent myIntent = new Intent(activity, MainActivity.class);
         RetrofitClient.setContext(activity);
         RetrofitClient.storeConfigSdk(activity, Url_Sdk, projectName_Sdk, apiKey_Sdk);
         RetrofitClient.setContext(activity);
         sHandler = handler;
+        activity.startActivity(myIntent);
+
 
     }
 

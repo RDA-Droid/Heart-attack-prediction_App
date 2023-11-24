@@ -13,7 +13,7 @@ import retrofit2.http.Query;
 
 public interface RetrofitApi {
 
-    @POST("predict")
+    @POST("predict/")
     Call<CloseResponse> newtransaccion(@Body Newtransaccion request);
 
     @GET("obtener_prediccion/{txId}")

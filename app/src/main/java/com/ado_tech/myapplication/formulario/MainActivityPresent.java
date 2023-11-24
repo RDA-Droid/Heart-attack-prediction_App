@@ -43,7 +43,12 @@ public class MainActivityPresent implements MainActivityContract.Presenter {
                 new ApiHelper.NewtransaccionHandler() {
                     @Override
                     public void onSuccess(int statusCode, CloseResponse response) {
-                        view.onWebServiceStop();
+                        view.onWebServiceSuccess();
+                        if (statusCode == 200) {
+                            view.finishFlow(true,response,statusCode);
+                        } else if (statusCode == 201) {
+                            view.finishFlow(true, response, statusCode);
+                        }
                     }
 
                     @Override

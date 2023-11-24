@@ -7,9 +7,12 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.ado_tech.myapplication.R;
+import com.ado_tech.myapplication.Result.ResultContract;
 import com.ado_tech.myapplication.Result.ResultsActivity;
 import com.ado_tech.myapplication.model.CloseResponse;
 
@@ -24,46 +27,26 @@ public class MainActivity extends Activity implements MainActivityContract.View 
             editTextPreviousHeartProblems, editTextMedicationUse, editTextStressLevel, editTextSedentaryHours,
             editTextIncome, editTextBMI, editTextTriglycerides, editTextPhysicalActivityDays,
             editTextSleepHours, editTextCountry, editTextContinent, editTextHemisphere,editTextFamilyHistory;
-    private Button confirmButton;
-    GifImageView loadin;
 
+    private TextView
+            textViewAge, textViewSexMale, textViewCholesterol, textViewSystolicPressure,
+            textViewDiastolicPressure, textViewHeartRate, textViewDiabetes, textViewSmoking,
+            textViewObesity, textViewAlcoholConsumption, textViewExerciseHours, textViewDietBalanced,
+            textViewPreviousHeartProblems, textViewMedicationUse, textViewStressLevel, textViewSedentaryHours,
+            textViewIncome, textViewBMI, textViewTriglycerides, textViewPhysicalActivityDays,
+            textViewSleepHours, textViewCountry, textViewContinent, textViewHemisphere, textViewFamilyHistory;
+
+
+    private Button confirmButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         setPresenter(new MainActivityPresent(this, this));
-
-        loadin = findViewById(R.id.loaderGif);
-        loadin.setVisibility(View.INVISIBLE);
-        editTextAge = findViewById(R.id.editTextAge);
-        editTextSexMale = findViewById(R.id.editTextSexMale);
-        editTextCholesterol = findViewById(R.id.editTextCholesterol);
-        editTextSystolicPressure = findViewById(R.id.editTextSystolicPressure);
-        editTextDiastolicPressure = findViewById(R.id.editTextDiastolicPressure);
-        editTextHeartRate = findViewById(R.id.editTextHeartRate);
-        editTextDiabetes = findViewById(R.id.editTextDiabetes);
-        editTextSmoking = findViewById(R.id.editTextSmoking);
-        editTextObesity = findViewById(R.id.editTextObesity);
-        editTextFamilyHistory  = findViewById(R.id.editTextFamilyHistory);
-        editTextAlcoholConsumption = findViewById(R.id.editTextAlcoholConsumption);
-        editTextExerciseHours = findViewById(R.id.editTextExerciseHours);
-        editTextDietBalanced = findViewById(R.id.editTextDietBalanced);
-        editTextPreviousHeartProblems = findViewById(R.id.editTextPreviousHeartProblems);
-        editTextMedicationUse = findViewById(R.id.editTextMedicationUse);
-        editTextStressLevel = findViewById(R.id.editTextStressLevel);
-        editTextSedentaryHours = findViewById(R.id.editTextSedentaryHours);
-        editTextIncome = findViewById(R.id.editTextIncome);
-        editTextBMI = findViewById(R.id.editTextBMI);
-        editTextTriglycerides = findViewById(R.id.editTextTriglycerides);
-        editTextPhysicalActivityDays = findViewById(R.id.editTextPhysicalActivityDays);
-        editTextSleepHours = findViewById(R.id.editTextSleepHours);
-        editTextCountry = findViewById(R.id.editTextCountry);
-        editTextContinent = findViewById(R.id.editTextContinent);
-        editTextHemisphere = findViewById(R.id.editTextHemisphere);
-
+        vistas();
+        viewstext();
         confirmButton = findViewById(R.id.confirmadr);
-
         confirmButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -132,8 +115,39 @@ public class MainActivity extends Activity implements MainActivityContract.View 
     }
     @Override
     public void onWebServiceStart() {
-        loadin.setVisibility(View.VISIBLE);
-        editTextAge.setVisibility(View.INVISIBLE);
+        finishview(); finishallviews();
+        confirmButton.setVisibility(View.INVISIBLE);
+    }
+
+    @Override
+    public void finishFlow(boolean result, CloseResponse response, Integer code) {
+        if (result) {
+
+            Intent intent = new Intent(this, ResultsActivity.class);
+            intent.putExtra("Error","200");
+            intent.putExtra("Other_Information", response.getother_info());
+            intent.putExtra("transaction_id",response.gettransaction_id());
+            intent.putExtra("Probabilidad",response.getprobability());
+
+            System.out.println(response.gettransaction_id());
+            System.out.println(response.getother_info());
+            startActivityForResult(intent, 29);
+            finish();
+        }
+    }
+
+    @Override
+    public void onWebServiceStop() {
+
+    }
+
+
+    @Override
+    public void onWebServiceSuccess() {
+
+    }
+    public  void finishview(){
+         editTextAge.setVisibility(View.INVISIBLE);
         editTextSexMale.setVisibility(View.INVISIBLE);
         editTextCholesterol.setVisibility(View.INVISIBLE);
         editTextSystolicPressure.setVisibility(View.INVISIBLE);
@@ -159,38 +173,104 @@ public class MainActivity extends Activity implements MainActivityContract.View 
         editTextContinent.setVisibility(View.INVISIBLE);
         editTextHemisphere.setVisibility(View.INVISIBLE);
     }
-
-    @Override
-    public void finishFlow(boolean result, CloseResponse response, Integer code) {
-        if (result) {
-            Intent intent = new Intent(this, ResultsActivity.class);
-            intent.putExtra("Error","200");
-            intent.putExtra("Other_Information", response.getother_info());
-            intent.putExtra("transaction_id",response.gettransaction_id());
-            startActivityForResult(intent, 29);
-            finish();
-        }
-    }
-
-    @Override
-    public void onWebServiceStop() {
-
-    }
-
-    @Override
-    public void onWebServiceResume() {
-
-    }
-
     @Override
     public void continueFlow(boolean result, CloseResponse response, Integer code) {
 
+
+    }
+
+    public void finishallviews(){
+        textViewAge.setVisibility(View.INVISIBLE);
+        textViewSexMale.setVisibility(View.INVISIBLE);
+        textViewCholesterol.setVisibility(View.INVISIBLE);
+        textViewSystolicPressure.setVisibility(View.INVISIBLE);
+        textViewDiastolicPressure.setVisibility(View.INVISIBLE);
+        textViewHeartRate.setVisibility(View.INVISIBLE);
+        textViewDiabetes.setVisibility(View.INVISIBLE);
+        textViewSmoking.setVisibility(View.INVISIBLE);
+        textViewObesity.setVisibility(View.INVISIBLE);
+        textViewAlcoholConsumption.setVisibility(View.INVISIBLE);
+        textViewExerciseHours.setVisibility(View.INVISIBLE);
+        textViewDietBalanced.setVisibility(View.INVISIBLE);
+        textViewPreviousHeartProblems.setVisibility(View.INVISIBLE);
+        textViewMedicationUse.setVisibility(View.INVISIBLE);
+        textViewStressLevel.setVisibility(View.INVISIBLE);
+        textViewSedentaryHours.setVisibility(View.INVISIBLE);
+        textViewIncome.setVisibility(View.INVISIBLE);
+        textViewBMI.setVisibility(View.INVISIBLE);
+        textViewTriglycerides.setVisibility(View.INVISIBLE);
+        textViewPhysicalActivityDays.setVisibility(View.INVISIBLE);
+        textViewSleepHours.setVisibility(View.INVISIBLE);
+        textViewCountry.setVisibility(View.INVISIBLE);
+        textViewContinent.setVisibility(View.INVISIBLE);
+        textViewHemisphere.setVisibility(View.INVISIBLE);
+        textViewFamilyHistory.setVisibility(View.INVISIBLE);
+
+    }
+
+
+    public void viewstext(){
+        textViewAge = findViewById(R.id.textViewAge);
+        textViewSexMale = findViewById(R.id.textViewSexMale);
+        textViewCholesterol = findViewById(R.id.textViewCholesterol);
+        textViewSystolicPressure = findViewById(R.id.textViewSystolicPressure);
+        textViewDiastolicPressure = findViewById(R.id.textViewDiastolicPressure);
+        textViewHeartRate = findViewById(R.id.textViewHeartRate);
+        textViewDiabetes = findViewById(R.id.textViewDiabetes);
+        textViewSmoking = findViewById(R.id.textViewSmoking);
+        textViewObesity = findViewById(R.id.textViewObesity);
+        textViewAlcoholConsumption = findViewById(R.id.textViewAlcoholConsumption);
+        textViewExerciseHours = findViewById(R.id.textViewExerciseHours);
+        textViewDietBalanced = findViewById(R.id.textViewDietBalanced);
+        textViewPreviousHeartProblems = findViewById(R.id.textViewPreviousHeartProblems);
+        textViewMedicationUse = findViewById(R.id.textViewMedicationUse);
+        textViewStressLevel = findViewById(R.id.textViewStressLevel);
+        textViewSedentaryHours = findViewById(R.id.textViewSedentaryHours);
+        textViewIncome = findViewById(R.id.textViewIncome);
+        textViewBMI = findViewById(R.id.textViewBMI);
+        textViewTriglycerides = findViewById(R.id.textViewTriglycerides);
+        textViewPhysicalActivityDays = findViewById(R.id.textViewPhysicalActivityDays);
+        textViewSleepHours = findViewById(R.id.textViewSleepHours);
+        textViewCountry = findViewById(R.id.textViewCountry);
+        textViewContinent = findViewById(R.id.textViewContinent);
+        textViewHemisphere = findViewById(R.id.textViewHemisphere);
+        textViewFamilyHistory = findViewById(R.id.textViewFamilyHistory);
+
+    }
+
+    public void vistas(){
+        editTextAge = findViewById(R.id.editTextAge);
+        editTextSexMale = findViewById(R.id.editTextSexMale);
+        editTextCholesterol = findViewById(R.id.editTextCholesterol);
+        editTextSystolicPressure = findViewById(R.id.editTextSystolicPressure);
+        editTextDiastolicPressure = findViewById(R.id.editTextDiastolicPressure);
+        editTextHeartRate = findViewById(R.id.editTextHeartRate);
+        editTextDiabetes = findViewById(R.id.editTextDiabetes);
+        editTextSmoking = findViewById(R.id.editTextSmoking);
+        editTextObesity = findViewById(R.id.editTextObesity);
+        editTextFamilyHistory  = findViewById(R.id.editTextFamilyHistory);
+        editTextAlcoholConsumption = findViewById(R.id.editTextAlcoholConsumption);
+        editTextExerciseHours = findViewById(R.id.editTextExerciseHours);
+        editTextDietBalanced = findViewById(R.id.editTextDietBalanced);
+        editTextPreviousHeartProblems = findViewById(R.id.editTextPreviousHeartProblems);
+        editTextMedicationUse = findViewById(R.id.editTextMedicationUse);
+        editTextStressLevel = findViewById(R.id.editTextStressLevel);
+        editTextSedentaryHours = findViewById(R.id.editTextSedentaryHours);
+        editTextIncome = findViewById(R.id.editTextIncome);
+        editTextBMI = findViewById(R.id.editTextBMI);
+        editTextTriglycerides = findViewById(R.id.editTextTriglycerides);
+        editTextPhysicalActivityDays = findViewById(R.id.editTextPhysicalActivityDays);
+        editTextSleepHours = findViewById(R.id.editTextSleepHours);
+        editTextCountry = findViewById(R.id.editTextCountry);
+        editTextContinent = findViewById(R.id.editTextContinent);
+        editTextHemisphere = findViewById(R.id.editTextHemisphere);
     }
 
     @Override
     public void setPresenter(MainActivityContract.Presenter presenter) {
-
+        this.presenter = presenter;
     }
+
 
     @Override
     public void onNoConnection() {

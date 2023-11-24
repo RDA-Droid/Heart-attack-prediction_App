@@ -15,7 +15,7 @@ Ejemplo de campors para el apuntamiento de la APP
                         SplashScreen.this,
                         "demo",                    "ProyecName"
                         "db92efc69991",              "Apikery"
-                        "http://127.0.0.1:5000",       "UrlBase Remplezar por el Local"
+                        "http://127.0.0.1:5000",       "UrlBase Remplezar por el Local, Recomendable usar Ngrok"
                         new AppHandler() {
                             @Override
                             public void onSuccess(CloseResponse response, int code, String uuidDevice) {
@@ -34,7 +34,21 @@ Ejemplo de campors para el apuntamiento de la APP
 
     }
 
-Tener En cuenta que para la ejecucion debe correr el servicio de Prediccion https://github.com/RDA-Droid/Servicio_Heart-attack-prediction
+## Tener En cuenta que para la ejecucion debe correr el servicio de Prediccion https://github.com/RDA-Droid/Servicio_Heart-attack-prediction
+
+[![Imagenes2.png](https://i.postimg.cc/cJCbjjZb/Imagenes2.png)](https://postimg.cc/67sc4M8r)
+[![Imagenes3.png](https://i.postimg.cc/2jZPrPvp/Imagenes3.png)](https://postimg.cc/5jfPmKnp)
+[![Imagenes4.png](https://i.postimg.cc/ZqQMhc5K/Imagenes4.png)](https://postimg.cc/yJFPm0Rw)
+
+
+## Aspecto Apk:
+
+[![iamgen5-1.jpg](https://i.postimg.cc/xCkBkZ4z/iamgen5-1.jpg)](https://postimg.cc/Fd4T8Tmr)
+[![imagen6.jpg](https://i.postimg.cc/5NWD0nqX/imagen6.jpg)](https://postimg.cc/14Mv70dS)
+[![imagen7.jpg](https://i.postimg.cc/VvnTgC1s/imagen7.jpg)](https://postimg.cc/kRMfXDBL)
+[![imagen8.jpg](https://i.postimg.cc/DyQHbLBB/imagen8.jpg)](https://postimg.cc/LnXNcYd1)
+[![imagen9.jpg](https://i.postimg.cc/0yc4VxgS/imagen9.jpg)](https://postimg.cc/NK2b03jG)
+
 
 ### Generar un APK para la Aplicación "App":
 

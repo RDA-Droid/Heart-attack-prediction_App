@@ -41,7 +41,7 @@ public interface MainActivityContract {
         void onWebServiceStart();
         void finishFlow(boolean result, CloseResponse response, Integer code);
         void onWebServiceStop();
-        void onWebServiceResume();
+        void onWebServiceSuccess();
         void continueFlow(boolean result, CloseResponse response, Integer code);
     }
 }

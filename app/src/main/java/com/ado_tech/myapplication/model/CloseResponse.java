@@ -32,8 +32,8 @@ public class CloseResponse extends ResponseBody {
         return other_info;
     }
 
-    public void setprobability(String probability) {
-        this.probability = probability;
+    public String getprobability() {
+        return probability;
     }
 
     public String gettransaction_id() {
